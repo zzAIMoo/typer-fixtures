@@ -15,8 +15,8 @@ A generic command-line tool for generating and managing test fixtures via API. E
 ## Architecture
 
 ```text
-typer-fixtures/
-├── app/
+root/
+├── typer_fixtures/
 │   ├── database.py              # Generic HTTP client
 │   ├── main.py                  # CLI application with dynamic discovery
 │   ├── fixtures/                # 📁 Your data/configurations
@@ -130,7 +130,7 @@ from .base import Generator
 
 class MyDataGenerator(Generator):
     def __init__(self, api_url="http://localhost:3000", timeout=30.0, fixture_data=None):
-        # Fixtures are automatically discovered from my_data_fixtures.py
+        # Fixtures are automatically discovered from my_data_fixtures.py if you don't pass fixture_data
         super().__init__(fixture_data, api_url, timeout)
 
         # Set your API endpoints
@@ -261,27 +261,6 @@ The CLI automatically discovers and loads your new generator!
 4. **Set your API endpoints** in the generator constructor
 5. **Test locally** - the CLI automatically discovers your new generator
 6. **Keep sensitive data private** - it's automatically gitignored
-
-## Makefile Integration
-
-The project includes convenient Makefile commands:
-
-```bash
-# List all available generators and fixtures
-make list-fixtures
-
-# Generate fixtures to files
-make generate-fixtures
-make generate-fixtures args="--save my_fixtures.json"
-
-# Database operations
-make reset-database
-make reset-database-and-setup
-make list-existing
-
-# Skip confirmation for automation
-make reset-database args="--confirm"
-```
 
 ## Contributing
 
