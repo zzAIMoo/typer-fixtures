@@ -1,0 +1,9 @@
+# Ignore all custom fixture files
+*.py
+
+# Keep example fixtures and package files
+!__init__.py
+!example_fixtures.py
+
+# Keep any README files
+!README.md

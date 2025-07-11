@@ -1,0 +1,35 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "typer-fixtures"
+version = "0.1.0"
+description = "Generic CLI tool for generating and managing fixtures via using Typer"
+authors = ["Simone Sechi <simone.sechi24@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "typer_fixtures" }]
+keywords = ["fixtures", "cli", "typer"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Utilities",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+typer = "^0.16.0"
+httpx = "^0.28.1"
+pyyaml = "^6.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+black = "^24.0.0"
+
+[tool.poetry.scripts]
+typer-fixtures = "typer_fixtures.main:app"
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
